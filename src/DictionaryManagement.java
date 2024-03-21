@@ -1,7 +1,11 @@
 import java.util.ArrayList;
 
 public class DictionaryManagement {
-    Dictionary dict;
+    private Dictionary dict;
+
+    public Dictionary getDict() {
+        return dict;
+    }
 
     public DictionaryManagement(Dictionary dict) {
         this.dict = dict;

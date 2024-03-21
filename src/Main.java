@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        DictionaryCommandline dictCmd = new DictionaryCommandline();
+        DictionaryCommandLine dictCmd = new DictionaryCommandLine();
         dictCmd.dictionaryBasic();
 
         Skanner.close();
