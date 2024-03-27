@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class DictionaryCommandLine {
     private DictionaryManagement dictMan;
 
@@ -9,12 +12,24 @@ public class DictionaryCommandLine {
         dictMan = new DictionaryManagement();
     }
 
+    public DictionaryManagement getDictMan() {
+        return dictMan;
+    }
+
     public void showAllWords() {
+        formatAndPrint(dictMan.getDict().getWords());
+    }
+
+    public void showListOfWords(ArrayList<Word> words) {
+        formatAndPrint(words);
+    }
+
+    private void formatAndPrint(List<Word> words) {
         String no = "No", english = "English", vietnamese = "Vietnamese";
         int[] columnWidths = {no.length(), english.length(), vietnamese.length()};
 
         int i = 1;
-        for (Word word : dictMan.getDict().getWords()) {
+        for (Word word : words) {
             int tmp = (int) (Math.log10(i) + 1);
             if (tmp > columnWidths[0]) {
                 columnWidths[0] = tmp;
@@ -45,7 +60,7 @@ public class DictionaryCommandLine {
         System.out.println();
 
         i = 1;
-        for (Word word : dictMan.getDict().getWords()) {
+        for (Word word : words) {
             System.out.print(i);
             for (int j = 0; j < columnWidths[0] - (int) (Math.log10(i) + 1); j++) {
                 System.out.print(" ");
@@ -68,5 +83,15 @@ public class DictionaryCommandLine {
     public void dictionaryBasic() {
         dictMan.insertFromCommandline();
         showAllWords();
+    }
+
+    public void lookUp() {
+        List<Word> words = getDictMan().dictionaryLookup();
+        if (words.size() == 0) {
+            System.out.println("Word not found.");
+        }
+        else {
+            formatAndPrint(words);
+        }
     }
 }
