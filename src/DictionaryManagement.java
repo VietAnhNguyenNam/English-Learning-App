@@ -89,6 +89,18 @@ public class DictionaryManagement {
         }
     }
 
+    public boolean dictionaryExportToFile(boolean append) {
+        try (FileWriter writer = new FileWriter("text/outputDictionary.txt", append)) {
+            for (final Word w : getDict().getWords()) {
+                writer.write(w.getEnglishWord() + "\t" + w.getMeaning() + "\n");
+            }
+            return true;
+        } catch (IOException e) {
+            System.out.println("Error occurred. Cannot write to file.");
+            return false;
+        }
+    }
+
     public List<Word> dictionaryLookup() {
         int choice;
         do {
@@ -103,27 +115,22 @@ public class DictionaryManagement {
         List<Word> filteredWords = null;
         switch (choice) {
             case 1:
-                filteredWords = getDict().getWords().stream().
-                        filter(w -> w.getEnglishWord().equals(ref)).toList();
-                return filteredWords;
+                return findEnglishWords(ref);
             case 2:
-                filteredWords = getDict().getWords().stream().
-                        filter(w -> w.getMeaning().equals(ref)).toList();
-                return filteredWords;
+                return findVietnameseMeanings(ref);
             default:
                 return null;
         }
     }
 
-    public boolean dictionaryExportToFile(boolean append) {
-        try (FileWriter writer = new FileWriter("text/outputDictionary.txt", append)) {
-            for (final Word w : getDict().getWords()) {
-                writer.write(w.getEnglishWord() + "\t" + w.getMeaning() + "\n");
-            }
-            return true;
-        } catch (IOException e) {
-            System.out.println("Error occurred. Cannot write to file.");
-            return false;
-        }
+    public List<Word> findEnglishWords(String englishWord) {
+         return getDict().getWords().stream().
+                 filter(w -> w.getEnglishWord().matches("(?i)^" + englishWord + ".*")).toList();
     }
+
+    public List<Word> findVietnameseMeanings(String meaning) {
+        return getDict().getWords().stream().
+                filter(w -> w.getMeaning().matches("(?i)^" + meaning + ".*")).toList();
+    }
+
 }

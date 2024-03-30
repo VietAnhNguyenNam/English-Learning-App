@@ -1,3 +1,3 @@
 abstract public class Game {
-    abstract boolean playGame();
+    abstract void playGame();
 }

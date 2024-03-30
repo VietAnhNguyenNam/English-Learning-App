@@ -2,12 +2,14 @@ import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
 
-public class Game2 {
+public class Game2 extends Game {
     private Dictionary dict;
 
-    public Game2(Dictionary dictionary) {
-        this.dict = dictionary;
-    }
+//    public Game2(Dictionary dictionary) {
+//        this.dict = dictionary;
+//    }
+
+
 
     public void playGame() {
         ArrayList<Word> words = dict.getWords();

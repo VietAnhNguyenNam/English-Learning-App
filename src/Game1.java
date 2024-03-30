@@ -1,7 +1,7 @@
 
 import java.util.Scanner;
 
-public class Game1 {
+public class Game1 extends Game {
     // Cau hoi
     private static final String[] Question = {
             "What _ you doing?",
@@ -105,7 +105,7 @@ public class Game1 {
             "D", "C", "A", "B", "C", "B", "A",
             "C", "B", "A", "B"};
 
-    public void startGame() {
+    public void playGame() {
         Scanner sc = new Scanner(System.in);
 
         int correctAnswers = 0;
