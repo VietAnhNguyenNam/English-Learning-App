@@ -125,12 +125,12 @@ public class DictionaryManagement {
 
     public List<Word> findEnglishWords(String englishWord) {
          return getDict().getWords().stream().
-                 filter(w -> w.getEnglishWord().matches("(?i)^" + englishWord + ".*")).toList();
+                 filter(w -> w.getEnglishWord().matches("(?i)^" + englishWord + ".*")).collect(Collectors.toList()) ;
     }
 
     public List<Word> findVietnameseMeanings(String meaning) {
         return getDict().getWords().stream().
-                filter(w -> w.getMeaning().matches("(?i)^" + meaning + ".*")).toList();
+                filter(w -> w.getMeaning().matches("(?i)^" + meaning + ".*")).collect(Collectors.toList()) ;
     }
 
 }

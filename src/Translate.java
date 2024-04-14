@@ -27,7 +27,8 @@ public class Translate {
     }
 
     private static String translate(String langFrom, String langTo, String text) throws IOException {
-        String urlStr = "https://script.google.com/macros/s/AKfycbyddMJsGVJlJKGwln3IsiS4CUyA9JWRtxpOvx2fmNW6lGw42rdXZyAmBQfVUaxlr_oq/exec" +
+        String API_Key = System.getenv("TRANSLATE_API_KEY");
+        String urlStr = "https://script.google.com/macros/s/" + API_Key + "/exec" +
                 "?q=" + URLEncoder.encode(text, "UTF-8") +
                 "&target=" + langTo +
                 "&source=" + langFrom;

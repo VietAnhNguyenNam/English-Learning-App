@@ -31,28 +31,42 @@
 //}
 
 
+import javafx.application.Application;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Main {
+import static javafx.application.Application.launch;
+
+public class Main extends Application {
 
     public static void main(String[] args) {
-        // translate
-        String text = "These are short, famous texts in English from classic sources like the Bible or Shakespeare. Some texts have word definitions and explanations to help you. Some of these texts are written in an old style of English. Try to understand them, because the English that we speak today is based on what our great, great, great, great grandparents spoke before! Of course, not all these texts were originally written in English. The Bible, for example, is a translation. But they are all well known in English today, and many of them express beautiful thoughts.";
-        String text2 = "ông bụt chùa bùi cầm bùa đuổi chuột";
-        System.out.println("Translated text: " + Translate.en2Vi(text));
+//        System.out.println(Translate.en2Vi("English"));
+        launch();
 
-        // dictionaryDB
-        List<String> stringList = Database.findFirst10("app");
-        for (final String word : stringList) {
-            System.out.println(word);
-        }
-        System.out.println(Database.meaningOf("dictionary"));
-
-        Skanner.close();
     }
 
 
+    @Override
+    public void start(Stage stage) throws Exception {
+//        FXMLLoader mainFXML = new FXMLLoader(Main.class.getResource("graphic.fxml"));
+//        Scene mainScene = new Scene(mainFXML.load());
+//        mainScene.getStylesheets().add("style.css");
+//
+//
+//        stage.setScene(mainScene);
+//        stage.show();
+        FXMLLoader mainFXML = new FXMLLoader(Main.class.getResource("game1.fxml"));
+        Scene mainScene = new Scene(mainFXML.load());
 
+
+
+        stage.setScene(mainScene);
+        stage.show();
+    }
 }
