@@ -4,6 +4,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 
 public class Translate {
     public static String en2Vi(String text) {
@@ -27,8 +28,8 @@ public class Translate {
     }
 
     private static String translate(String langFrom, String langTo, String text) throws IOException {
-        String API_Key = System.getenv("TRANSLATE_API_KEY");
-        String urlStr = "https://script.google.com/macros/s/" + API_Key + "/exec" +
+        String API_KEY = System.getenv("TRANSLATE_API_KEY");
+        String urlStr = "https://script.google.com/macros/s/"+ API_KEY + "/exec" +
                 "?q=" + URLEncoder.encode(text, "UTF-8") +
                 "&target=" + langTo +
                 "&source=" + langFrom;
@@ -44,4 +45,5 @@ public class Translate {
         in.close();
         return response.toString();
     }
+
 }
