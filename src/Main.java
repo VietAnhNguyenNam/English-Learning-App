@@ -1,72 +1,51 @@
-//import java.util.ArrayList;
-//
-//public class Main {
-//    public static void main(String[] args) {
-//        // test game1
-////        Game1 start = new Game1();
-////        start.startGame();
-//        // test game2
-////        DictionaryCommandLine dictCMD = new DictionaryCommandLine();
-////        dictCMD.dictionaryBasic();
-////        ArrayList<Word> words = new ArrayList<>();
-////        words.add(new Word("Fish", "cá"));
-////        words.add(new Word("Cat", "mèo"));
-////        words.add(new Word("Bird", "chim"));
-////        words.add(new Word("Dog", "chó"));
-////        words.add(new Word("Tiger", "hổ"));
-////        words.add(new Word("Lion", "sư tử"));
-////        words.add(new Word("Bear", "gấu"));
-////        Dictionary dict = new Dictionary(words);
-////
-////
-////        Game2 game = new Game2(dict);
-////
-////        game.playGame();
-//
-//        DictionaryCommandLine dictCMD = new DictionaryCommandLine();
-//        dictCMD.dictionaryAdvanced();
-//
-//        Skanner.close();
-//    }
-//}
-
-
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.binding.Bindings;
+import javafx.beans.binding.ObjectBinding;
+import javafx.collections.MapChangeListener;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+import org.mindrot.jbcrypt.BCrypt;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-
-import static javafx.application.Application.launch;
+import java.util.concurrent.TimeUnit;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Main extends Application {
 
     public static void main(String[] args) {
-//        System.out.println(Translate.en2Vi("English"));
         launch();
-
     }
-
 
     @Override
     public void start(Stage stage) throws Exception {
-//        FXMLLoader mainFXML = new FXMLLoader(Main.class.getResource("graphic.fxml"));
-//        Scene mainScene = new Scene(mainFXML.load());
-//        mainScene.getStylesheets().add("style.css");
-//
-//
-//        stage.setScene(mainScene);
-//        stage.show();
-        FXMLLoader mainFXML = new FXMLLoader(Main.class.getResource("game1.fxml"));
-        Scene mainScene = new Scene(mainFXML.load());
+        Scenes scenes = new Scenes(stage);
 
-
-
-        stage.setScene(mainScene);
+        stage.setTitle("English Learning App");
+        stage.setScene(Scenes.getLoginScene());
         stage.show();
+
     }
 }
+
+//public class Main {
+//
+//    public static void main(String[] args) throws InterruptedException {
+////        Text2Speech.speak("Vietnam");
+////        System.out.println(Translate.en2Vi(""));
+//
+//        System.out.println(Chatbot.responseTo(2, "What are the top 5 things to do when traveling?"));
+////        Account.deleteConversation(2);
+//
+//    }
+
+
+//}

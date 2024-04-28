@@ -2,13 +2,12 @@
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
-public class Game1Controller {
+public class Game1Controller extends fxController {
 
     @FXML
     private RadioButton option1;
@@ -23,9 +22,17 @@ public class Game1Controller {
     private RadioButton option4;
 
     @FXML
-    private Label questionLabel;
+    private Text questionContent;
 
     @FXML
+    private Label questionNumber;
+
+    @FXML
+    private Button submit;
+
+    @FXML
+    private VBox question_pane;
+
     private final String[] questions = {
             "What _ you doing?",
             "The little boy pleaded ___ not to leave him alone in the dark.",
@@ -129,7 +136,11 @@ public class Game1Controller {
     private int correctAnswers = 0;
 
     @FXML
-    private void initialize() {
+    public void initialize() {
+        super.initialize();
+        sp_game.setStyle("-fx-background-color: white;");
+        questionContent.wrappingWidthProperty().bind(question_pane.widthProperty());
+
         ToggleGroup toggleGroup = new ToggleGroup();
         option1.setToggleGroup(toggleGroup);
         option2.setToggleGroup(toggleGroup);
@@ -141,7 +152,9 @@ public class Game1Controller {
 
     private void showNextQuestion() {
         if (currentQuestionIndex < questions.length) {
-            questionLabel.setText(questions[currentQuestionIndex]);
+            int tmp = currentQuestionIndex + 1;
+            questionNumber.setText("Question " + tmp + "/" + answers.length + ": ");
+            questionContent.setText(questions[currentQuestionIndex]);
             option1.setText("A. " + options[currentQuestionIndex][0]);
             option2.setText("B. " + options[currentQuestionIndex][1]);
             option3.setText("C. " + options[currentQuestionIndex][2]);
@@ -166,7 +179,7 @@ public class Game1Controller {
     }
 
     private void showResult() {
-        Stage stage = (Stage) questionLabel.getScene().getWindow();
+        Stage stage = (Stage) questionContent.getScene().getWindow();
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Quiz Result");

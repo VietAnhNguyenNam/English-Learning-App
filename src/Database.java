@@ -63,4 +63,32 @@ public class Database {
         }
         return meaning.toString();
     }
+
+    public static String phoneticOf(String ref) {
+        Connection con = null;
+        Statement statement = null;
+        ResultSet res = null;
+        StringBuilder meaning = new StringBuilder();
+        String sql = "SELECT phonetic FROM tbl_edict WHERE word = '" + ref + "';";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, username, password);
+            statement = con.createStatement();
+            res = statement.executeQuery(sql);
+            while (res.next()) {
+                meaning.append(res.getString(1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (res != null) res.close();
+                if (statement != null) statement.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return meaning.toString();
+    }
 }

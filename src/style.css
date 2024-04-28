@@ -1,0 +1,81 @@
+#search_comboBox .arrow, #search_comboBox .arrow-button{
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+
+#search_comboBox {
+    -fx-font-size: 14px;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+}
+
+#meaning_pane > .viewport {
+   -fx-background-color: transparent;
+}
+
+#pronounce {
+    -fx-background-image: url('../../../images/speaker.png');
+}
+
+#search_btn {
+    -fx-background-image: url('../../../images/search.png');
+}
+
+
+
+/* common */
+#side_panel {
+    -fx-background-color: #33FFFF;
+    -fx-padding: 150px 0px 0px 0px;
+}
+
+.icon_button {
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;
+    -fx-background-position: center;
+    -fx-padding: 0;
+    -fx-background-radius: 0;
+}
+
+.icon_button:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+/*
+#sp_lookup {
+    -fx-background-image: url('../../../images/search.png');
+}
+
+#sp_translate {
+    -fx-background-image: url('../../../images/translate.png');
+}
+*/
+
+
+
+
+/* translate */
+#switch_language {
+    -fx-padding: 0;
+    -fx-background-color: transparent;
+}
+
+#switch_language:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.1);
+}
+
+#show > .viewport {
+   -fx-background-color: transparent;
+}
+
+
+
+/* assistant */
+#scrollpane > .viewport {
+   -fx-background-color: transparent;
+}
