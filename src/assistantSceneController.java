@@ -1,21 +1,14 @@
-import com.petebevin.markdown.MarkdownProcessor;
 import javafx.beans.binding.Bindings;
 import javafx.beans.binding.ObjectBinding;
-import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.MapChangeListener;
 import javafx.fxml.FXML;
 import javafx.geometry.VPos;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Region;
 import javafx.scene.layout.RowConstraints;
-import javafx.scene.text.FontSmoothingType;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
-import java.lang.reflect.Field;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,8 +39,6 @@ public class assistantSceneController extends fxController {
     private boolean loaded = false;
 
     private ObjectBinding<Object> userDataBinding(Stage stage) {
-        // Use array because local variables must be (effectively) final when used inside
-        // a lambda expression or anonymous class.
         Object[] keyHolder = new Object[1];
         stage
                 .getProperties()
@@ -56,13 +47,12 @@ public class assistantSceneController extends fxController {
                             @Override
                             public void onChanged(Change<? extends Object, ? extends Object> change) {
                                 keyHolder[0] = change.getKey();
-                                // Only need to capture the key once.
                                 change.getMap().removeListener(this);
                             }
                         });
-        var oldUserData = stage.getUserData(); // save current value
-        stage.setUserData(new Object());       // invoke the listener
-        stage.setUserData(oldUserData);        // restore to old value
+        var oldUserData = stage.getUserData();
+        stage.setUserData(new Object());
+        stage.setUserData(oldUserData);
         return Bindings.valueAt(stage.getProperties(), keyHolder[0]);
     }
 
@@ -107,7 +97,7 @@ public class assistantSceneController extends fxController {
                 (observableValue, oldVal, newVal) -> {
                     if (!loaded) {
                         if (newVal != null && newVal != oldVal) {
-                            System.out.println("user id: " + newVal);
+//                            System.out.println("user id: " + newVal);
                             List<String[]> list = Account.getConversation((int) Scenes.getStage().getUserData());
                             for (final String[] chat : list) {
                                 if (chat[0].equals("user")) {
@@ -120,6 +110,10 @@ public class assistantSceneController extends fxController {
                         }
                     }
                 });
+
+        gridpane.heightProperty().addListener((observable, oldValue, newValue) -> {
+            scrollpane.setVvalue(scrollpane.getVmax());
+        });
 
 //        System.out.println("1: " + (int) Scenes.getStage().getUserData());
 

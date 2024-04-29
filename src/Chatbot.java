@@ -28,17 +28,17 @@ public class Chatbot {
             // Enable output and set request body
             connection.setDoOutput(true);
 
-//            String requestBody = "{\"contents\": [" + formatConversation(userId) + "{\"role\": \"user\", \"parts\": [{\"text\": \"" + message + "\"}]}]}";
-            JSONArray contents = formatConversation(userId);
-            JSONObject object = new JSONObject();
-            object.put("role", "user");
-            JSONArray parts = new JSONArray();
-            JSONObject partsObj = new JSONObject();
-            partsObj.put("text", message);
-            parts.put(partsObj);
-            object.put("parts", parts);
-            contents.put(object);
-            String requestBody = "{\"contents\": " + contents.toString() + "}";
+            String requestBody = "{\"contents\": [" + formatConversation(userId) + "{\"role\": \"user\", \"parts\": [{\"text\": \"" + message + "\"}]}]}";
+//            JSONArray contents = formatConversation(userId);
+//            JSONObject object = new JSONObject();
+//            object.put("role", "user");
+//            JSONArray parts = new JSONArray();
+//            JSONObject partsObj = new JSONObject();
+//            partsObj.put("text", message);
+//            parts.put(partsObj);
+//            object.put("parts", parts);
+//            contents.put(object);
+//            String requestBody = "{\"contents\": " + contents.toString() + "}";
             try (DataOutputStream wr = new DataOutputStream(connection.getOutputStream())) {
                 wr.write(requestBody.getBytes());
             }
@@ -77,39 +77,39 @@ public class Chatbot {
         }
     }
 
-    private static String getConversation() {
-        StringBuilder res = new StringBuilder();
-
-//        {\"role\": \"user\", \"parts\": [{\"text\": \"" + message + "\"}]}
-
-        try (BufferedReader reader = new BufferedReader(new FileReader("conversation.txt"))) {
-            String line;
-            while ((line = reader.readLine()) != null) {
-                Matcher matcher = Pattern.compile("\\\"(.*)\\\",\\\"(.*)\\\"").matcher(line);
-                if (matcher.find()) {
-                    res.append("{\"role\": \"").append(matcher.group(1)).append("\", \"parts\": [{\"text\": \"").append(matcher.group(2)).append("\"}]}, ");
-                }
-            }
-            return res.toString();
-        } catch (IOException e) {
-            System.out.println("Error reading conversation log.");
-            e.printStackTrace();
-            return "";
-        }
-    }
-
-    private static void appendConversationLog(String role, String message) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter("conversation.txt", true))) {
-            writer.write("\"" + role + "\",\"" + message + "\"\n");
-        } catch (IOException e) {
-            System.out.println("Error writing conversation log.");
-            e.printStackTrace();
-        }
-    }
+//    private static String getConversation() {
+//        StringBuilder res = new StringBuilder();
+//
+////        {\"role\": \"user\", \"parts\": [{\"text\": \"" + message + "\"}]}
+//
+//        try (BufferedReader reader = new BufferedReader(new FileReader("conversation.txt"))) {
+//            String line;
+//            while ((line = reader.readLine()) != null) {
+//                Matcher matcher = Pattern.compile("\\\"(.*)\\\",\\\"(.*)\\\"").matcher(line);
+//                if (matcher.find()) {
+//                    res.append("{\"role\": \"").append(matcher.group(1)).append("\", \"parts\": [{\"text\": \"").append(matcher.group(2)).append("\"}]}, ");
+//                }
+//            }
+//            return res.toString();
+//        } catch (IOException e) {
+//            System.out.println("Error reading conversation log.");
+//            e.printStackTrace();
+//            return "";
+//        }
+//    }
+//
+//    private static void appendConversationLog(String role, String message) {
+//        try (BufferedWriter writer = new BufferedWriter(new FileWriter("conversation.txt", true))) {
+//            writer.write("\"" + role + "\",\"" + message + "\"\n");
+//        } catch (IOException e) {
+//            System.out.println("Error writing conversation log.");
+//            e.printStackTrace();
+//        }
+//    }
 
 //    {\"role\": \"user\", \"parts\": [{\"text\": \"" + message + "\"}]}
 
-    private static JSONArray formatConversation(int userId) {
+    private static String formatConversation(int userId) {
         List<String[]> list = Account.getConversation(userId);
         JSONArray resJson = new JSONArray();
         StringBuilder res = new StringBuilder();
@@ -126,7 +126,7 @@ public class Chatbot {
             res.append("{\"role\": \"").append(strings[0]).append("\", \"parts\": [{\"text\": \"").append(strings[1].replace("\n", "\\n")).append("\"}]}, ");
         }
 
-//        return res.toString();
-        return resJson;
+        return res.toString();
+//        return resJson;
     }
 }
