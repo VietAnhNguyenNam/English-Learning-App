@@ -30,7 +30,7 @@ public class Main extends Application {
         Scenes scenes = new Scenes(stage);
 
         stage.setTitle("English Learning App");
-        stage.setScene(Scenes.getLoginScene());
+        stage.setScene(Scenes.getLookupScene());
         stage.show();
 
     }

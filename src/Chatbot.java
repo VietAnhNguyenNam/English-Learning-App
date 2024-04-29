@@ -13,19 +13,14 @@ import java.util.regex.Pattern;
 public class Chatbot {
     public static String responseTo(int userId, String message) {
         try {
-            // URL to send the POST request
             URL url = new URL("https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=" + System.getenv("GEMINI_API_KEY"));
 
-            // Open a connection
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 
-            // Set request method to POST
             connection.setRequestMethod("POST");
 
-            // Set Content-Type header
             connection.setRequestProperty("Content-Type", "application/json");
 
-            // Enable output and set request body
             connection.setDoOutput(true);
 
             String requestBody = "{\"contents\": [" + formatConversation(userId) + "{\"role\": \"user\", \"parts\": [{\"text\": \"" + message + "\"}]}]}";
@@ -58,7 +53,6 @@ public class Chatbot {
             }
             in.close();
 
-            // Close the connection
             connection.disconnect();
 
             JSONObject jsonObject = new JSONObject(response.toString());
