@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="616.0" prefWidth="937.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lookupSceneController">
+   <children>
+      <VBox fx:id="meaning_vbox" layoutX="209.0" layoutY="88.0" prefHeight="500.0" prefWidth="684.0" AnchorPane.bottomAnchor="28.0" AnchorPane.leftAnchor="209.0" AnchorPane.rightAnchor="30.600000000000023" AnchorPane.topAnchor="88.0">
+         <children>
+            <Label fx:id="englishWord" text="Word">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font>
+            </Label>
+            <HBox alignment="CENTER_LEFT" spacing="10.0">
+               <children>
+                  <Label fx:id="phonetic" text="Phonetic">
+                     <font>
+                        <Font name="System Italic" size="18.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="pronounce" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="35.0" prefWidth="28.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="27.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/speaker.png" />
+                           </image></ImageView>
+                     </graphic></Button>
+               </children>
+            </HBox>
+            <Line fx:id="line" endX="595.8929443359375" endY="1.2928870916366577" startX="-100.0">
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </Line>
+            <ScrollPane fx:id="meaning_pane" fitToHeight="true" fitToWidth="true" prefHeight="520.0" prefWidth="702.0">
+               <content>
+                  <Text fx:id="detail" strokeType="OUTSIDE" strokeWidth="0.0" text="Meaning" textAlignment="JUSTIFY" wrappingWidth="694.1366536617279">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+               </content>
+               <VBox.margin>
+                  <Insets />
+               </VBox.margin>
+            </ScrollPane>
+         </children>
+      </VBox>
+    <Button fx:id="search_btn" layoutX="838.0" layoutY="8.0" mnemonicParsing="false" prefHeight="35.0" styleClass="icon_button" AnchorPane.rightAnchor="64.60000000000002">
+         <graphic>
+            <ImageView fitHeight="27.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic></Button>
+      <ComboBox fx:id="search_comboBox" editable="true" layoutX="59.0" layoutY="13.0" prefHeight="26.0" prefWidth="594.0" promptText="Enter word" AnchorPane.leftAnchor="207.39999999999998" AnchorPane.rightAnchor="135.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </ComboBox>
+      <AnchorPane fx:id="side_panel" prefHeight="616.0" prefWidth="186.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button fx:id="sp_home" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Home">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="sp_lookup" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Lookup">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="sp_translate" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Translate">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="sp_game" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Game">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="sp_assistant" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Assistant">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
