@@ -2,37 +2,46 @@
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class Game1Controller extends fxController {
+import java.io.IOException;
+import java.util.Objects;
+
+
+public class Game1Controller {
 
     @FXML
-    private RadioButton option1;
+    private AnchorPane anchorGame1;
+
 
     @FXML
-    private RadioButton option2;
+    private Button option1;
 
     @FXML
-    private RadioButton option3;
+    private Button option2;
 
     @FXML
-    private RadioButton option4;
+    private Button option3;
 
     @FXML
-    private Text questionContent;
+    private Button option4;
 
     @FXML
-    private Label questionNumber;
-
+    private Label questionLabel;
     @FXML
-    private Button submit;
-
+    protected ImageView back_view;
     @FXML
-    private VBox question_pane;
-
+    protected Image back_image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/game/back.png")));
     private final String[] questions = {
             "What _ you doing?",
             "The little boy pleaded ___ not to leave him alone in the dark.",
@@ -84,7 +93,7 @@ public class Game1Controller extends fxController {
             {"reaction", "response", "answer", "rely"},
             {"stem", "flourish", "root", "sprout"},
             {"nose on his face", "tip of the tongue", "back of his hand", "hair on his head"},
-            {"cats and dogs", "salt and pepper: muối tiêu (màu tóc)", "chalk and cheese: khác nhau hoàn toàn", "here and there: đó đây"},
+            {"cats and dogs", "salt and pepper", "chalk and cheese", "here and there"},
             {"because", "whereas", "even though", "whether or not"},
             {"rush", "dive", "leap", "fly"},
             {"have been appearing", "to be appearing", "to appear", "by appearing"},
@@ -112,11 +121,11 @@ public class Game1Controller extends fxController {
             {"dated", "dating", "dates back", "to date"},
             {"Don’t worry. Things break.", "OK. Go ahead.", "Yes, certainly.", "I’d rather not."},
             {"stand in for ", "put up with ", "get away from", "get on with "},
-            {"leaving aside : ngoại trừ", "let alone : huống hồ", "apart from : ngoại trừ", "not counting : ngoại trừ"},
+            {"leaving aside", "let alone", "apart from", "not counting"},
             {"not to major", "not major", "wouldn’t major", "isn’t majoring"},
             {"at", "by", "under", "with"},
-            {"gets away : rời đi", "comes round : tỉnh lại (become conscious)", "pulls through : hồi phục (sức khỏe)", "stands up"},
-            {"Really", "Practically : thực tế mà nói, gần như", "Actually : thực tế là (luôn đứng ở trong câu)", "Utterly : hoàn toàn, cực kỳ"},
+            {"gets away", "comes round", "pulls through", "stands up"},
+            {"Really", "Practically", "Actually", "Utterly"},
             {"getting", "going", "making", "doing"},
             {"comply", "adhere", "observe", "abide"}
 
@@ -132,64 +141,84 @@ public class Game1Controller extends fxController {
             "C", "B", "A", "B"
     };
 
-    private int currentQuestionIndex = 0;
-    private int correctAnswers = 0;
+    private int current = 0;
+    private int score = 0;
 
     @FXML
     public void initialize() {
-        super.initialize();
-        sp_game.setStyle("-fx-background-color: white;");
-        questionContent.wrappingWidthProperty().bind(question_pane.widthProperty());
-
-        ToggleGroup toggleGroup = new ToggleGroup();
-        option1.setToggleGroup(toggleGroup);
-        option2.setToggleGroup(toggleGroup);
-        option3.setToggleGroup(toggleGroup);
-        option4.setToggleGroup(toggleGroup);
-
-        showNextQuestion();
+        back_view.setImage(back_image);
+        showQuestion();
     }
 
-    private void showNextQuestion() {
-        if (currentQuestionIndex < questions.length) {
-            int tmp = currentQuestionIndex + 1;
-            questionNumber.setText("Question " + tmp + "/" + answers.length + ": ");
-            questionContent.setText(questions[currentQuestionIndex]);
-            option1.setText("A. " + options[currentQuestionIndex][0]);
-            option2.setText("B. " + options[currentQuestionIndex][1]);
-            option3.setText("C. " + options[currentQuestionIndex][2]);
-            option4.setText("D. " + options[currentQuestionIndex][3]);
-        } else {
-            // Khi đã hiển thị hết các câu hỏi, hiển thị kết quả
-            showResult();
-        }
+
+    @FXML
+    void option1(ActionEvent e) {
+        checkAnswer(option1.getText());
+
     }
 
     @FXML
-    private void submitAnswer(ActionEvent event) {
-        RadioButton selectedRadioButton = (RadioButton) option1.getToggleGroup().getSelectedToggle();
-        if (selectedRadioButton != null) {
-            String userChoice = selectedRadioButton.getText().substring(0, 1);
-            if (userChoice.equals(answers[currentQuestionIndex])) {
-                correctAnswers++;
-            }
-            currentQuestionIndex++;
-            showNextQuestion();
-        }
+    void option2(ActionEvent e) {
+        checkAnswer(option2.getText());
+
     }
 
-    private void showResult() {
-        Stage stage = (Stage) questionContent.getScene().getWindow();
+    @FXML
+    void option3(ActionEvent e) {
+        checkAnswer(option3.getText());
+
+    }
+
+    @FXML
+    void option4(ActionEvent e) {
+        checkAnswer(option4.getText());
+
+    }
+
+    public void checkAnswer(String userChoice) {
+        String correctAnswer = answers[current];
+        String extractedLetter = userChoice.substring(0, 1);
+        if (extractedLetter.equalsIgnoreCase(correctAnswer)) {
+            score++;
+        }
+        current++;
+        showQuestion();
+    }
+
+    public void showQuestion() {
+        if (current < questions.length) {
+            questionLabel.setText(questions[current]);
+            option1.setText("A. " + options[current][0]);
+            option2.setText("B. " + options[current][1]);
+            option3.setText("C. " + options[current][2]);
+            option4.setText("D. " + options[current][3]);
+        } else {
+            showResult();
+
+        }
+
+    }
+    public void showResult() {
+        Stage stage = (Stage) questionLabel.getScene().getWindow();
 
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Quiz Result");
         alert.setHeaderText(null);
         alert.setContentText("Quiz completed!\n" +
                 "Total questions: " + questions.length + "\n" +
-                "Correct answers: " + correctAnswers + "\n" +
-                "Incorrect answers: " + (questions.length - correctAnswers));
+                "Correct answers: " + score + "\n" +
+                "Incorrect answers: " + (questions.length - score));
         alert.setOnHidden(evt -> stage.close());
         alert.show();
     }
-}
+    public void back(ActionEvent event) throws IOException {
+        Parent root =  FXMLLoader.load(getClass().getResource("game.fxml"));
+        Stage stage = (Stage) ((Node)event.getSource()).getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
 
+
+
+}

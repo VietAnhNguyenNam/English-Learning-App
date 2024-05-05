@@ -1,145 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="616.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Game1Controller">
+<AnchorPane fx:id="anchorGame1" stylesheets="@background.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Game1Controller">
     <children>
-      <VBox fx:id="question_pane" layoutX="223.0" layoutY="121.0" prefHeight="113.0" prefWidth="679.0" spacing="15.0" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="35.0">
-         <children>
-            <Label fx:id="questionNumber" text="Label">
-               <font>
-                  <Font name="System Bold Italic" size="15.0" />
-               </font>
-            </Label>
-            <Text fx:id="questionContent" strokeType="OUTSIDE" strokeWidth="0.0" text="I remember as a child, and as a young budding naturalist, spending all my time observing and testing the world around me—moving pieces, altering the flow of things, and documenting ways the world responded to me. Now, as an adult and a professional naturalist, I’ve approached language in the same way, not from an academic point of view but as a curious child still building little mud dams in creeks and chasing after frogs. So this book is an odd thing: it is a naturalist’s walk through the language-making landscape of the English language, and following in the naturalist’s tradition it combines observation, experimentation, speculation, and documentation—activities we don’t normally associate with language." textAlignment="JUSTIFY" wrappingWidth="678.4000000000001">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Text>
-            <VBox spacing="15.0">
-               <children>
-                    <RadioButton fx:id="option1" mnemonicParsing="false" prefHeight="18.0" prefWidth="600.0" text="Option1">
-                        <font>
-                            <Font size="15.0" />
-                        </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </RadioButton>
-                    <RadioButton fx:id="option2" mnemonicParsing="false" prefHeight="18.0" prefWidth="600.0" text="Option2">
-                        <font>
-                            <Font size="15.0" />
-                        </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </RadioButton>
-                    <RadioButton fx:id="option3" mnemonicParsing="false" prefHeight="18.0" prefWidth="600.0" text="Option3">
-                        <font>
-                            <Font size="15.0" />
-                        </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </RadioButton>
-                    <RadioButton fx:id="option4" mnemonicParsing="false" prefHeight="18.0" prefWidth="600.0" text="Option4">
-                        <font>
-                            <Font size="15.0" />
-                        </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </RadioButton>
-               </children>
-            </VBox>
-         </children>
-      </VBox>
-        <Button fx:id="submit" layoutX="223.0" layoutY="530.0" mnemonicParsing="false" onAction="#submitAnswer" prefHeight="40.0" prefWidth="680.0" text="Submit" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="33.799999999999955">
+        <Label fx:id="questionLabel" alignment="CENTER" layoutX="65.0" layoutY="63.0" prefHeight="80.0" prefWidth="548.0" text="question" textAlignment="CENTER" wrapText="true">
             <font>
-                <Font size="18.0" />
+                <Font name="Arial Rounded MT Bold" size="25.0" />
+            </font></Label>
+        <Button fx:id="option1" layoutY="144.0" mnemonicParsing="false" onAction="#option1" prefHeight="80.0" prefWidth="339.0" style="-fx-background-color: #99FFFF;" text="Option1">
+            <font>
+                <Font name="Century" size="20.0" />
             </font>
-      </Button>
-      <AnchorPane fx:id="side_panel" prefHeight="616.0" prefWidth="186.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <VBox AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Button fx:id="sp_home" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Home">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fx:id="icon_home" fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="sp_lookup" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Lookup">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fx:id="icon_lookup" fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="sp_translate" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Translate">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fx:id="icon_translate" fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="sp_game" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Game">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fx:id="icon_game" fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="sp_assistant" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Assistant">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fx:id="icon_assistant" fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="sp_account" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Account">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fx:id="icon_account" fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </Button>
-               </children>
-            </VBox>
-         </children>
-      </AnchorPane>
+        </Button>
+        <Button fx:id="option2" layoutX="339.0" layoutY="144.0" mnemonicParsing="false" onAction="#option2" prefHeight="80.0" prefWidth="339.0" style="-fx-background-color: #CCFF99;" text="Option2">
+            <font>
+                <Font name="Century" size="20.0" />
+            </font>
+        </Button>
+        <Button fx:id="option3" layoutY="223.0" mnemonicParsing="false" onAction="#option3" prefHeight="80.0" prefWidth="339.0" style="-fx-background-color: #FFCC33;" text="Option3">
+            <font>
+                <Font name="Century" size="20.0" />
+            </font>
+        </Button>
+        <Button fx:id="option4" layoutX="339.0" layoutY="223.0" mnemonicParsing="false" onAction="#option4" prefHeight="80.0" prefWidth="339.0" style="-fx-background-color: #FFCCFF;" text="Option4">
+            <font>
+                <Font name="Century" size="20.0" />
+            </font>
+        </Button>
+        <Button fx:id="change" layoutY="375.0" mnemonicParsing="false" onAction="#back" prefHeight="55.0" prefWidth="55.0">
+            <graphic>
+                <ImageView fx:id="back_view" fitHeight="35.0" fitWidth="37.0" pickOnBounds="true" preserveRatio="true" />
+            </graphic>
+            <font>
+                <Font name="System Bold" size="20.0" />
+            </font>
+        </Button>
     </children>
 </AnchorPane>

@@ -17,13 +17,13 @@
 }
 
 #pronounce {
-    -fx-background-image: url('../../../images/speaker.png');
+    -fx-background-image: url('../images/speaker.png');
     -fx-alignment: center;
     -fx-padding: 0;
 }
 
 #search_btn {
-    -fx-background-image: url('../../../images/search.png');
+    -fx-background-image: url('../images/search.png');
     -fx-alignment: center;
     -fx-padding: 0;
 }

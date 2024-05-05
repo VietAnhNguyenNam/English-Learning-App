@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane stylesheets="@background.css" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Game2Controller">
+    <children>
+        <Button layoutX="596.0" layoutY="466.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="79.0" prefWidth="66.0" textFill="#d0184c">
+            <font>
+                <Font name="System Bold" size="29.0" />
+            </font>
+            <graphic>
+                <ImageView fx:id="reset_view" fitHeight="69.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true" />
+            </graphic>
+        </Button>
+        <ImageView fx:id="image_view" fitHeight="327.0" fitWidth="400.0" layoutX="401.0" layoutY="2.0">
+            <effect>
+                <ColorAdjust brightness="-0.04" />
+            </effect>
+        </ImageView>
+        <Label fx:id="hint_label" layoutX="41.0" layoutY="143.0" text="HINTS: " textFill="RED">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="30.0" />
+            </font>
+        </Label>
+        <TextField fx:id="tf1" editable="false" layoutX="332.0" layoutY="384.0" prefHeight="40.0" prefWidth="40.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextField>
+        <TextField fx:id="tf2" editable="false" layoutX="382.0" layoutY="384.0" prefHeight="40.0" prefWidth="40.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextField>
+        <TextField fx:id="tf3" editable="false" layoutX="433.0" layoutY="384.0" prefHeight="40.0" prefWidth="40.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextField>
+        <TextField fx:id="tf4" editable="false" layoutX="481.0" layoutY="384.0" prefHeight="40.0" prefWidth="40.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextField>
+        <TextField fx:id="tf5" editable="false" layoutX="531.0" layoutY="384.0" prefHeight="40.0" prefWidth="40.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextField>
+        <TextField fx:id="tf6" editable="false" layoutX="581.0" layoutY="384.0" prefHeight="40.0" prefWidth="40.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextField>
+        <TextField fx:id="tf7" editable="false" layoutX="635.0" layoutY="384.0" prefHeight="40.0" prefWidth="40.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextField>
+        <TextField fx:id="tf8" editable="false" layoutX="686.0" layoutY="384.0" prefHeight="40.0" prefWidth="40.0">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </TextField>
+        <Label layoutX="67.0" layoutY="381.0" text="Guess the word :">
+            <font>
+                <Font name="Microsoft YaHei UI" size="31.0" />
+            </font>
+        </Label>
+        <TextField fx:id="input" layoutX="352.0" layoutY="476.0" prefHeight="55.0" prefWidth="55.0">
+            <font>
+                <Font size="24.0" />
+            </font>
+        </TextField>
+        <Label layoutX="67.0" layoutY="479.0" text="Enter a Letter :">
+            <font>
+                <Font name="Microsoft YaHei UI" size="31.0" />
+            </font>
+        </Label>
+        <TextArea editable="false" layoutX="41.0" layoutY="55.0" prefHeight="79.0" prefWidth="250.0" text="Quy tắc : &#10;Bạn phải nhập chữ in hoa&#10;Bạn được chơi 6 lần&#10;&#10;">
+            <font>
+                <Font size="15.0" />
+            </font>
+        </TextArea>
+        <Label fx:id="letter_count" layoutX="150.0" layoutY="195.0" prefHeight="35.0" prefWidth="180.0">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="25.0" />
+            </font>
+        </Label>
+        <Label fx:id="hint" layoutX="150.0" layoutY="240.0" prefHeight="35.0" prefWidth="190.0">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="25.0" />
+            </font>
+        </Label>
+        <Button fx:id="buttoncheck" layoutX="448.0" layoutY="473.0" mnemonicParsing="false" onAction="#CheckInput" prefHeight="60.0" prefWidth="111.0" text="Check">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="24.0" />
+            </font>
+
+        </Button>
+        <Label layoutX="43.0" layoutY="195.0" prefHeight="35.0" prefWidth="84.0" text="Word:">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="25.0" />
+            </font>
+        </Label>
+        <Label layoutX="43.0" layoutY="240.0" prefHeight="35.0" prefWidth="111.0" text="Content:">
+            <font>
+                <Font name="Arial Rounded MT Bold" size="25.0" />
+            </font>
+        </Label>
+        <Button fx:id="back" layoutY="596.0" mnemonicParsing="false" onAction="#back" prefHeight="55.0" prefWidth="55.0">
+            <graphic>
+                <ImageView fx:id="back_view" fitHeight="36.0" fitWidth="43.0" pickOnBounds="true" preserveRatio="true" />
+            </graphic>
+        </Button>
+    </children>
+</AnchorPane>

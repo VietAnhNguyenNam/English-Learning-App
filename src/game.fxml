@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane stylesheets="@background.css" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameController">
+    <children>
+        <Button alignment="CENTER" layoutY="78.0" mnemonicParsing="false" onAction="#switchtoGame1" prefHeight="263.0" prefWidth="266.0" style="-fx-background-color: #417AD3;" textAlignment="CENTER">
+            <font>
+                <Font size="20.0" />
+            </font>
+            <graphic>
+                <ImageView fx:id="quiz_view" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+            </graphic></Button>
+        <Button alignment="CENTER" layoutX="322.0" layoutY="78.0" mnemonicParsing="false" onAction="#switchtoGame2" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: black;">
+            <font>
+                <Font size="20.0" />
+            </font>
+            <graphic>
+                <ImageView fx:id="hangman_view" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+            </graphic></Button>
+    </children>
+</AnchorPane>
