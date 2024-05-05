@@ -2,7 +2,7 @@
 
 English Learning App là ứng dụng học tiếng Anh được phát triển bằng ngôn ngữ Java và thư viện JavaFX. Mã nguồn gồm 3 thành phần chính: các lớp dùng để thao tác các chức năng logic (giao tiếp với cơ sở dữ liệu, giao tiếp với web server,...), các file FXML (đây là các file thể hiện bố cục, màu sắc, kích thước của các vật thể trong giao diện đồ họa) và các lớp controller dùng để điều khiển phản hồi các sự kiện xảy ra khi người dùng thao tác với giao diện đồ họa.
 
-Để build ứng dụng, cần tạo một cơ sở dữ liệu gồm các bảng sau:
+Để ứng dụng hoạt động với đầy đủ chức năng, cần tạo một cơ sở dữ liệu gồm các bảng sau:
 
 ```
 TABLE `accounts` (`id` int(11) NOT NULL, `username` varchar(255) NOT NULL, `password` varchar(255) NOT NULL)
