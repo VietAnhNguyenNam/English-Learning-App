@@ -17,69 +17,6 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="616.0" prefWidth="937.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="TranslateSceneController">
    <children>
-      <AnchorPane fx:id="side_panel" prefHeight="616.0" prefWidth="186.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-         <children>
-            <VBox AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <children>
-                  <Button fx:id="sp_home" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Home">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="sp_lookup" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Lookup">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="sp_translate" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Translate">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="sp_game" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Game">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </Button>
-                  <Button fx:id="sp_assistant" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Assistant">
-                     <font>
-                        <Font name="System Bold" size="17.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <graphic>
-                        <ImageView fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
-                     </graphic>
-                  </Button>
-               </children>
-            </VBox>
-         </children>
-      </AnchorPane>
       <GridPane hgap="10.0" layoutX="218.4" layoutY="41.0" prefHeight="486.0" prefWidth="687.0" AnchorPane.bottomAnchor="41.0" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="32.0" AnchorPane.topAnchor="88.80000000000007">
         <columnConstraints>
           <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="318.4" />
@@ -136,5 +73,79 @@
             <Font name="System Italic" size="14.0" />
          </font>
       </Label>
+      <AnchorPane fx:id="side_panel" prefHeight="616.0" prefWidth="186.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button fx:id="sp_home" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Home">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fx:id="icon_home" fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="sp_lookup" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Lookup">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fx:id="icon_lookup" fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="sp_translate" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Translate">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fx:id="icon_translate" fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="sp_game" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Game">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fx:id="icon_game" fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="sp_assistant" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Assistant">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fx:id="icon_assistant" fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="sp_account" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Account">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fx:id="icon_account" fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

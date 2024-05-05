@@ -39,7 +39,10 @@ public class SignupSceneController {
         } else if (!enteredPassword.equals(confirmedPassword)) {
             invalid_label.setText("Confirm password does not match");
             invalid_label.setVisible(true);
-        } else {
+        } else if (Account.alreadyExist(accountUsername)) {
+            invalid_label.setText("This username already exists");
+            invalid_label.setVisible(true);
+        }else {
             Account.newAccount(accountUsername, enteredPassword);
             Scenes.switchScene(Scenes.getNewLoginScene());
         }

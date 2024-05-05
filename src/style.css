@@ -16,13 +16,18 @@
    -fx-background-color: transparent;
 }
 
-/*#pronounce {
+#pronounce {
     -fx-background-image: url('../../../images/speaker.png');
+    -fx-alignment: center;
+    -fx-padding: 0;
 }
 
 #search_btn {
     -fx-background-image: url('../../../images/search.png');
-}*/
+    -fx-alignment: center;
+    -fx-padding: 0;
+}
+
 
 
 
@@ -37,8 +42,10 @@
     -fx-background-repeat: no-repeat;
     -fx-background-size: contain;
     -fx-background-position: center;
-    -fx-padding: 0;
     -fx-background-radius: 0;
+
+    -fx-alignment: baseline-left;
+    -fx-padding: 0 0 0 45px;
 }
 
 .icon_button:hover {
@@ -77,5 +84,11 @@
 
 /* assistant */
 #scrollpane > .viewport {
+   -fx-background-color: transparent;
+}
+
+
+/* account */
+#wordListScrollpane > .viewport {
    -fx-background-color: transparent;
 }

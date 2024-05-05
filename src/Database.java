@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Database {
-    private static String url = "jdbc:mysql://localhost:3306/dictionary";
+    private static String url = "jdbc:mysql://localhost:3306/english_learning_app";
     private static String username = "root";
     private static String password = "";
 

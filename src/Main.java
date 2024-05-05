@@ -30,7 +30,7 @@ public class Main extends Application {
         Scenes scenes = new Scenes(stage);
 
         stage.setTitle("English Learning App");
-        stage.setScene(Scenes.getLookupScene());
+        stage.setScene(Scenes.getLoginScene());
         stage.show();
 
     }
@@ -38,14 +38,10 @@ public class Main extends Application {
 
 //public class Main {
 //
-//    public static void main(String[] args) throws InterruptedException {
-////        Text2Speech.speak("Vietnam");
-////        System.out.println(Translate.en2Vi(""));
-//
-//        System.out.println(Chatbot.responseTo(2, "What are the top 5 things to do when traveling?"));
-////        Account.deleteConversation(2);
-//
+//    public static void main(String[] args) {
+//        DictionaryCommandLine dictCmd = new DictionaryCommandLine();
+//        dictCmd.dictionaryAdvanced();
 //    }
-
-
+//
+//
 //}

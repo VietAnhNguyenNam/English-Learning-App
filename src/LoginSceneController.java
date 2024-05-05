@@ -1,5 +1,9 @@
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+
+import java.util.Objects;
 
 public class LoginSceneController {
     @FXML
@@ -35,6 +39,9 @@ public class LoginSceneController {
             } else {
                 Scenes.getStage().setUserData(userId);
                 Scenes.switchScene(Scenes.getHomeScene());
+
+                AccountSceneController accountSceneController = Scenes.getAccountLoader().getController();
+                accountSceneController.getSavedWords();
             }
         }
     }

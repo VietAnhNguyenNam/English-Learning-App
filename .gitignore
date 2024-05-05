@@ -3,6 +3,8 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 .env
+.idea/
+English-Learning-App.iml
 
 ### Eclipse ###
 .apt_generated

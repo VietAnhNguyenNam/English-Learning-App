@@ -3,70 +3,34 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="616.0" prefWidth="937.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Game1Controller">
-    <children>
-      <VBox fx:id="question_pane" layoutX="223.0" layoutY="121.0" prefHeight="113.0" prefWidth="679.0" spacing="15.0" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="35.0">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="616.0" prefWidth="937.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="AccountSceneController">
+   <children>
+      <Label layoutX="218.0" layoutY="38.0" prefHeight="20.0" prefWidth="595.0" text="Saved Words" wrapText="true" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="124.0">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <StackPane layoutX="218.39999389648438" layoutY="80.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
          <children>
-            <Label fx:id="questionNumber" text="Label">
+            <ScrollPane fx:id="wordListScrollpane" fitToHeight="true" fitToWidth="true" prefHeight="536.0" prefWidth="719.0">
+               <content>
+                  <VBox fx:id="wordList" prefHeight="200.0" prefWidth="100.0" />
+               </content>
+            </ScrollPane>
+            <Label fx:id="noSavedWord" alignment="CENTER" prefHeight="20.0" prefWidth="595.0" text="Your saved words will be shown here" textFill="#818181" wrapText="true">
                <font>
-                  <Font name="System Bold Italic" size="15.0" />
+                  <Font name="System Italic" size="18.0" />
                </font>
             </Label>
-            <Text fx:id="questionContent" strokeType="OUTSIDE" strokeWidth="0.0" text="I remember as a child, and as a young budding naturalist, spending all my time observing and testing the world around me—moving pieces, altering the flow of things, and documenting ways the world responded to me. Now, as an adult and a professional naturalist, I’ve approached language in the same way, not from an academic point of view but as a curious child still building little mud dams in creeks and chasing after frogs. So this book is an odd thing: it is a naturalist’s walk through the language-making landscape of the English language, and following in the naturalist’s tradition it combines observation, experimentation, speculation, and documentation—activities we don’t normally associate with language." textAlignment="JUSTIFY" wrappingWidth="678.4000000000001">
-               <font>
-                  <Font size="17.0" />
-               </font>
-            </Text>
-            <VBox spacing="15.0">
-               <children>
-                    <RadioButton fx:id="option1" mnemonicParsing="false" prefHeight="18.0" prefWidth="600.0" text="Option1">
-                        <font>
-                            <Font size="15.0" />
-                        </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </RadioButton>
-                    <RadioButton fx:id="option2" mnemonicParsing="false" prefHeight="18.0" prefWidth="600.0" text="Option2">
-                        <font>
-                            <Font size="15.0" />
-                        </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </RadioButton>
-                    <RadioButton fx:id="option3" mnemonicParsing="false" prefHeight="18.0" prefWidth="600.0" text="Option3">
-                        <font>
-                            <Font size="15.0" />
-                        </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </RadioButton>
-                    <RadioButton fx:id="option4" mnemonicParsing="false" prefHeight="18.0" prefWidth="600.0" text="Option4">
-                        <font>
-                            <Font size="15.0" />
-                        </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </RadioButton>
-               </children>
-            </VBox>
          </children>
-      </VBox>
-        <Button fx:id="submit" layoutX="223.0" layoutY="530.0" mnemonicParsing="false" onAction="#submitAnswer" prefHeight="40.0" prefWidth="680.0" text="Submit" AnchorPane.bottomAnchor="46.0" AnchorPane.leftAnchor="223.0" AnchorPane.rightAnchor="33.799999999999955">
-            <font>
-                <Font size="18.0" />
-            </font>
-      </Button>
+      </StackPane>
       <AnchorPane fx:id="side_panel" prefHeight="616.0" prefWidth="186.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <VBox AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -141,5 +105,5 @@
             </VBox>
          </children>
       </AnchorPane>
-    </children>
+   </children>
 </AnchorPane>

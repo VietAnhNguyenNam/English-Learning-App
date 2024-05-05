@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Account {
 
-    private static String url = "jdbc:mysql://localhost:3306/accounts";
+    private static String url = "jdbc:mysql://localhost:3306/english_learning_app";
     private static String username = "root";
     private static String password = "";
 
@@ -33,6 +33,38 @@ public class Account {
             }
         }
 
+    }
+
+    public static boolean alreadyExist(String accountName) {
+        accountName = accountName.replace("'", "''");
+
+        Connection con = null;
+        Statement statement = null;
+        ResultSet res = null;
+        String sql = "SELECT username FROM accounts WHERE username = '" + accountName + "';";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, username, password);
+            statement = con.createStatement();
+            statement.executeQuery(sql);
+            res = statement.executeQuery(sql);
+            if (res.next()) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (res != null) res.close();
+                if (statement != null) statement.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return true;
     }
 
     // if password is correct, return user_id, else return -1
@@ -149,6 +181,105 @@ public class Account {
         Connection con = null;
         Statement statement = null;
         String sql = "DELETE FROM conversation WHERE user_id = " + userId + ";";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, username, password);
+            statement = con.createStatement();
+            statement.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (statement != null) statement.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static List<String> getSavedWords(int userId) {
+        List<String> returnStrings = new ArrayList<>();
+
+        Connection con = null;
+        Statement statement = null;
+        ResultSet res = null;
+        String sql = "SELECT word FROM saved_words WHERE user_id = " + userId + ";";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, username, password);
+            statement = con.createStatement();
+            res = statement.executeQuery(sql);
+            while (res.next()) {
+                returnStrings.add(res.getString(1));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (res != null) res.close();
+                if (statement != null) statement.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return returnStrings;
+    }
+
+    public static boolean savedWord(int userId, String word) {
+        boolean found;
+
+        Connection con = null;
+        Statement statement = null;
+        ResultSet res = null;
+        String sql = "SELECT word FROM saved_words WHERE user_id = " + userId + " AND word = '" + word + "';";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, username, password);
+            statement = con.createStatement();
+            res = statement.executeQuery(sql);
+            found = res.next();
+        } catch (Exception e) {
+            found = true;
+            e.printStackTrace();
+        } finally {
+            try {
+                if (res != null) res.close();
+                if (statement != null) statement.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+        return found;
+    }
+
+    public static void deleteSavedWord(int userId, String word) {
+        Connection con = null;
+        Statement statement = null;
+        String sql = "DELETE FROM saved_words WHERE user_id = " + userId + " AND word = '" + word + "';";
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            con = DriverManager.getConnection(url, username, password);
+            statement = con.createStatement();
+            statement.executeUpdate(sql);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (statement != null) statement.close();
+                if (con != null) con.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    public static void addToSavedWords(int userId, String word) {
+        Connection con = null;
+        Statement statement = null;
+        String sql = "INSERT INTO saved_words (user_id, word) VALUES (" + userId + ", '" + word + "');";
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(url, username, password);

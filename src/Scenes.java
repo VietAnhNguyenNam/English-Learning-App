@@ -6,7 +6,7 @@ import java.io.IOException;
 
 public class Scenes {
     private static Stage stage;
-    private static Scene mainScene;
+
     private static Scene loginScene;
     private static Scene signupScene;
     private static Scene homeScene;
@@ -14,14 +14,23 @@ public class Scenes {
     private static Scene translateScene;
     private static Scene game1Scene;
     private static Scene assistantScene;
+    private static Scene accountScene;
+
+    // these loaders will get initialized with scenes in getNew...Scene() method
+    private static FXMLLoader mainLoader;
+    private static FXMLLoader loginLoader;
+    private static FXMLLoader signupLoader;
+    private static FXMLLoader homeLoader;
+    private static FXMLLoader lookupLoader;
+    private static FXMLLoader translateLoader;
+    private static FXMLLoader game1Loader;
+    private static FXMLLoader assistantLoader;
+    private static FXMLLoader accountLoader;
 
 
     public Scenes(Stage stage) throws IOException {
         Scenes.stage = stage;
-//        stage.setUserData(2);
-//        System.out.println(stage.getUserData());
 
-//        mainScene = getNewMainScene();
         homeScene = getNewHomeScene();
         loginScene = getNewLoginScene();
         signupScene = getNewSignupScene();
@@ -29,15 +38,8 @@ public class Scenes {
         translateScene = getNewTranslateScene();
         game1Scene = getNewGame1Scene();
         assistantScene = getNewAssistantScene();
+        accountScene = getNewAccountScene();
 
-//        FXMLLoader mainLoader = ;
-//        mainScene = new Scene((new FXMLLoader(Scenes.class.getResource("graphic.fxml"))).load());
-//        FXMLLoader lookupLoader = new FXMLLoader(Scenes.class.getResource("lookup.fxml"));
-//        lookupScene = new Scene(lookupLoader.load());
-//        FXMLLoader translateLoader = new FXMLLoader(Scenes.class.getResource("translate.fxml"));
-//        translateScene = new Scene(translateLoader.load());
-//        FXMLLoader game1Loader = new FXMLLoader(Scenes.class.getResource("game1.fxml"));
-//        game1Scene = new Scene(game1Loader.load());
 
     }
 
@@ -46,12 +48,40 @@ public class Scenes {
         return stage;
     }
 
-
-    // get available scenes
-    public static Scene getMainScene() {
-        return mainScene;
+    // get loaders
+    public static FXMLLoader getLoginLoader() {
+        return loginLoader;
     }
 
+    public static FXMLLoader getSignupLoader() {
+        return signupLoader;
+    }
+
+    public static FXMLLoader getHomeLoader() {
+        return homeLoader;
+    }
+
+    public static FXMLLoader getLookupLoader() {
+        return lookupLoader;
+    }
+
+    public static FXMLLoader getTranslateLoader() {
+        return translateLoader;
+    }
+
+    public static FXMLLoader getGame1Loader() {
+        return game1Loader;
+    }
+
+    public static FXMLLoader getAssistantLoader() {
+        return assistantLoader;
+    }
+
+    public static FXMLLoader getAccountLoader() {
+        return accountLoader;
+    }
+
+    // get available scenes
     public static Scene getHomeScene() {
         return homeScene;
     }
@@ -80,45 +110,81 @@ public class Scenes {
         return signupScene;
     }
 
-    // get new scenes
-    public static Scene getNewMainScene() {
-        mainScene = getScene("graphic.fxml", "style.css");
-        return mainScene;
+    public static Scene getAccountScene() {
+        return accountScene;
     }
 
+    // get new scenes
     public static Scene getNewHomeScene() {
-        homeScene =  getScene("home.fxml", "style.css");
+        Object[] res = getLoaderAndScene("home.fxml", "style.css");
+        if (res != null) {
+            homeLoader = (FXMLLoader) res[0];
+            homeScene = (Scene) res[1];
+        }
         return homeScene;
     }
 
     public static Scene getNewLookupScene() {
-        lookupScene = getScene("lookup.fxml", "style.css");
+        Object[] res = getLoaderAndScene("lookup.fxml", "style.css");
+        if (res != null) {
+            lookupLoader = (FXMLLoader) res[0];
+            lookupScene = (Scene) res[1];
+        }
         return lookupScene;
     }
 
     public static Scene getNewGame1Scene() {
-        game1Scene = getScene("game1.fxml", "style.css");
+        Object[] res = getLoaderAndScene("game1.fxml", "style.css");
+        if (res != null) {
+            game1Loader = (FXMLLoader) res[0];
+            game1Scene = (Scene) res[1];
+        }
         return game1Scene;
     }
 
     public static Scene getNewTranslateScene() {
-        translateScene = getScene("translate.fxml", "style.css");
+        Object[] res = getLoaderAndScene("translate.fxml", "style.css");
+        if (res != null) {
+            translateLoader = (FXMLLoader) res[0];
+            translateScene = (Scene) res[1];
+        }
         return translateScene;
     }
 
     public static Scene getNewAssistantScene() {
-        assistantScene = getScene("assistant.fxml", "style.css");
+        Object[] res = getLoaderAndScene("assistant.fxml", "style.css");
+        if (res != null) {
+            assistantLoader = (FXMLLoader) res[0];
+            assistantScene = (Scene) res[1];
+        }
         return assistantScene;
     }
 
     public static Scene getNewLoginScene() {
-        loginScene = getScene("login.fxml", "style.css");
+        Object[] res = getLoaderAndScene("login.fxml", "style.css");
+        if (res != null) {
+            loginLoader = (FXMLLoader) res[0];
+            loginScene = (Scene) res[1];
+        }
         return loginScene;
     }
 
     public static Scene getNewSignupScene() {
-        signupScene = getScene("signup.fxml", "style.css");
+        Object[] res = getLoaderAndScene("signup.fxml", "style.css");
+        if (res != null) {
+            signupLoader = (FXMLLoader) res[0];
+            signupScene = (Scene) res[1];
+        }
         return signupScene;
+    }
+
+    public static Scene getNewAccountScene() {
+        Object[] res = getLoaderAndScene("account.fxml", "style.css");
+        if (res != null) {
+            accountLoader = (FXMLLoader) res[0];
+            accountScene = (Scene) res[1];
+        }
+        return accountScene;
     }
 
     public static void switchScene(Scene scene) {
@@ -129,14 +195,14 @@ public class Scenes {
         stage.setHeight(height);
     }
 
-    private static Scene getScene(String fxmlFile, String cssFile) {
+    private static Object[] getLoaderAndScene(String fxmlFile, String cssFile) {
         try {
             FXMLLoader fxmlLoader = new FXMLLoader(Scenes.class.getResource(fxmlFile));
             Scene scene = new Scene(fxmlLoader.load());
             if (!cssFile.isBlank()) {
                 scene.getStylesheets().add(cssFile);
             }
-            return scene;
+            return new Object[]{fxmlLoader, scene};
         } catch (IOException e) {
             System.out.println("Cannot create scene.");
             e.printStackTrace();

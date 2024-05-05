@@ -1,30 +1,25 @@
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.IOException;
-import java.net.URL;
 import java.util.List;
-import java.util.ResourceBundle;
+import java.util.Objects;
 
-public class lookupSceneController extends fxController {
+public class LookupSceneController extends fxController {
     @FXML
-    protected ComboBox search_comboBox;
+    private ComboBox search_comboBox;
     @FXML
-    protected Button search_btn;
-    protected String word;
+    private Button search_btn;
+    private String word;
     @FXML
     private VBox meaning_vbox;
     @FXML
@@ -40,10 +35,34 @@ public class lookupSceneController extends fxController {
     private Button pronounce;
     @FXML
     private ScrollPane meaning_pane;
-
+    @FXML
+    private Label noWordFound;
 
     @FXML
-    protected void handleSearchEvent() {
+    private Button bookmarked;
+    @FXML
+    private Button unbookmark;
+    @FXML
+    private ImageView bookmarked_view;
+    @FXML
+    private ImageView unbookmark_view;
+    @FXML
+    private Image bookmarked_image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/blue_bookmark_star.png")));
+    @FXML
+    private Image unbookmark_image = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/empty_bookmark_star.png")));
+
+    private void displayBookmark(String word) {
+        if (Account.savedWord((int) Scenes.getStage().getUserData(), word)) {
+            bookmarked.setVisible(true);
+            unbookmark.setVisible(false);
+        } else {
+            bookmarked.setVisible(false);
+            unbookmark.setVisible(true);
+        }
+    }
+
+    @FXML
+    private void handleSearchEvent() {
         List<String> stringList = Database.findFirst10(word);
         search_comboBox.getItems().clear();
         if (search_comboBox.getItems().addAll(stringList)) {
@@ -56,18 +75,36 @@ public class lookupSceneController extends fxController {
     }
 
     @FXML
-    protected void changeData() {
-        engWord = search_comboBox.getEditor().getText();
+    private void toogleVisible(boolean foundWord) {
+        if (foundWord) {
+            meaning_vbox.setVisible(true);
+            noWordFound.setVisible(false);
+        } else {
+            meaning_vbox.setVisible(false);
+            noWordFound.setVisible(true);
+        }
+    }
+
+    /*
+     * forceShowing is true when saved words are clicked to bypass the condition for showing the meaning pane in lookup scene,
+     * in lookup scene, this parameter is always false.
+     */
+    @FXML
+    public void changeData(String word, boolean forceShowing) {
+        engWord = word;
         englishWord.setText(engWord);
         String meaning = Database.meaningOf(engWord);
         detail.setText(meaning);
         String pronounce = Database.phoneticOf(engWord);
         phonetic.setText(pronounce);
-        if (!search_comboBox.getSelectionModel().isEmpty()) {
-            meaning_vbox.setVisible(true);
+        if (forceShowing) {
+            toogleVisible(true);
+        } else if (!search_comboBox.getSelectionModel().isEmpty()) {
+            toogleVisible(true);
         } else {
-            meaning_vbox.setVisible(false);
+            toogleVisible(false);
         }
+        displayBookmark(engWord);
     }
 
     @FXML
@@ -78,10 +115,12 @@ public class lookupSceneController extends fxController {
         line.startXProperty().bind(meaning_vbox.widthProperty().multiply(0));
         line.endXProperty().bind(meaning_vbox.widthProperty().multiply(0.95));
 
+        bookmarked_view.setImage(bookmarked_image);
+        unbookmark_view.setImage(unbookmark_image);
 
         // search preview
 
-        meaning_vbox.setVisible(false);
+        toogleVisible(false);
         sp_lookup.setStyle("-fx-background-color: white");
 
         PauseTransition pause = new PauseTransition(Duration.millis(200));
@@ -108,13 +147,24 @@ public class lookupSceneController extends fxController {
         });
 
 
-
-
-        search_btn.setOnAction(actionEvent -> changeData());
-        search_comboBox.setOnKeyPressed(keyEvent -> changeData());
+        search_btn.setOnAction(actionEvent -> changeData(search_comboBox.getEditor().getText(), false));
+        search_comboBox.setOnKeyPressed(keyEvent -> changeData(search_comboBox.getEditor().getText(), false));
 //        search_comboBox.getSelectionModel().selectedItemProperty().
 
         pronounce.setOnAction(actionEvent -> Text2Speech.speak(engWord));
 
+
+//        bookmarked, unbookmark;
+        unbookmark.setOnAction(actionEvent -> {
+            Account.addToSavedWords((int) Scenes.getStage().getUserData(), engWord);
+            unbookmark.setVisible(false);
+            bookmarked.setVisible(true);
+        });
+
+        bookmarked.setOnAction(actionEvent -> {
+            Account.deleteSavedWord((int) Scenes.getStage().getUserData(), engWord);
+            bookmarked.setVisible(false);
+            unbookmark.setVisible(true);
+        });
     }
 }

@@ -51,7 +51,7 @@ public class assistantSceneController extends fxController {
                             }
                         });
         var oldUserData = stage.getUserData();
-        stage.setUserData(new Object());
+        stage.setUserData(-1);
         stage.setUserData(oldUserData);
         return Bindings.valueAt(stage.getProperties(), keyHolder[0]);
     }
