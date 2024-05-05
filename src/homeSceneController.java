@@ -55,7 +55,7 @@ public class homeSceneController extends fxController {
 
         goLookup.setOnAction(actionEvent -> Scenes.switchScene(Scenes.getLookupScene()));
         goTranslate.setOnAction(actionEvent -> Scenes.switchScene(Scenes.getTranslateScene()));
-        goGame.setOnAction(actionEvent -> Scenes.switchScene(Scenes.getGame1Scene()));
+        goGame.setOnAction(actionEvent -> Scenes.switchScene(Scenes.getGameScene()));
         goAssistant.setOnAction(actionEvent -> Scenes.switchScene(Scenes.getAssistantScene()));
         goAccount.setOnAction(actionEvent -> Scenes.switchScene(Scenes.getNewAccountScene()));
 

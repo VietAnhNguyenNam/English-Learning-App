@@ -1,25 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane stylesheets="@background.css" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameController">
+<AnchorPane minWidth="-Infinity" prefHeight="616.0" prefWidth="937.0" stylesheets="@background.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GameController">
     <children>
-        <Button alignment="CENTER" layoutY="78.0" mnemonicParsing="false" onAction="#switchtoGame1" prefHeight="263.0" prefWidth="266.0" style="-fx-background-color: #417AD3;" textAlignment="CENTER">
-            <font>
-                <Font size="20.0" />
-            </font>
-            <graphic>
-                <ImageView fx:id="quiz_view" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
-            </graphic></Button>
-        <Button alignment="CENTER" layoutX="322.0" layoutY="78.0" mnemonicParsing="false" onAction="#switchtoGame2" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: black;">
-            <font>
-                <Font size="20.0" />
-            </font>
-            <graphic>
-                <ImageView fx:id="hangman_view" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
-            </graphic></Button>
+      <HBox alignment="CENTER" layoutX="187.2" layoutY="176.0" prefHeight="263.0" prefWidth="750.0" spacing="50.0" AnchorPane.bottomAnchor="177.0" AnchorPane.leftAnchor="187.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="176.0">
+         <children>
+              <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchtoGame1" prefHeight="263.0" prefWidth="266.0" style="-fx-background-color: #417AD3;" textAlignment="CENTER">
+                  <font>
+                      <Font size="20.0" />
+                  </font>
+                  <graphic>
+                      <ImageView fx:id="quiz_view" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+                  </graphic>
+            </Button>
+              <Button alignment="CENTER" mnemonicParsing="false" onAction="#switchtoGame2" prefHeight="250.0" prefWidth="250.0" style="-fx-background-color: black;">
+                  <font>
+                      <Font size="20.0" />
+                  </font>
+                  <graphic>
+                      <ImageView fx:id="hangman_view" fitHeight="250.0" fitWidth="250.0" pickOnBounds="true" preserveRatio="true" />
+                  </graphic>
+            </Button>
+         </children>
+      </HBox>
+      <AnchorPane fx:id="side_panel" layoutX="14.0" layoutY="-77.0" prefHeight="616.0" prefWidth="186.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <VBox AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <Button fx:id="sp_home" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Home">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fx:id="icon_home" fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="sp_lookup" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Lookup">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fx:id="icon_lookup" fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="sp_translate" layoutX="10.0" layoutY="10.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Translate">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fx:id="icon_translate" fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="sp_game" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Game">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fx:id="icon_game" fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="sp_assistant" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Assistant">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fx:id="icon_assistant" fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="sp_account" mnemonicParsing="false" prefHeight="47.0" prefWidth="186.0" styleClass="icon_button" text="Account">
+                     <font>
+                        <Font name="System Bold" size="17.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <graphic>
+                        <ImageView fx:id="icon_account" fitHeight="32.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+               </children>
+            </VBox>
+         </children>
+      </AnchorPane>
     </children>
 </AnchorPane>

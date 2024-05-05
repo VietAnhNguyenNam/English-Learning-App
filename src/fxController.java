@@ -79,7 +79,7 @@ public class fxController {
         sp_home.setOnAction(actionEvent -> Scenes.switchScene(Scenes.getHomeScene()));
         sp_lookup.setOnAction(actionEvent -> Scenes.switchScene(Scenes.getLookupScene()));
         sp_translate.setOnAction(actionEvent -> Scenes.switchScene(Scenes.getTranslateScene()));
-        sp_game.setOnAction(actionEvent -> Scenes.switchScene(Scenes.getGame1Scene()));
+        sp_game.setOnAction(actionEvent -> Scenes.switchScene(Scenes.getGameScene()));
         sp_assistant.setOnAction(actionEvent -> Scenes.switchScene(Scenes.getAssistantScene()));
         sp_account.setOnAction(actionEvent -> Scenes.switchScene(Scenes.getNewAccountScene()));
     }

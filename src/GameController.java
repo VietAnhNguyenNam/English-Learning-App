@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Objects;
 
-public class GameController {
+public class GameController extends fxController {
     private Stage stage;
     private Scene scene;
     @FXML
@@ -27,6 +27,9 @@ public class GameController {
 
 
     public void initialize() {
+        super.initialize();
+        sp_translate.setStyle("-fx-background-color: white;");
+
         quiz_view.setImage(quiz_image);
         hangman_view.setImage(hangman_image);
 

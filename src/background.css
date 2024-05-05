@@ -1,6 +1,26 @@
 
 .root {
-    -fx-background-image: url("../images/background.png");
+    -fx-background-image: url("../../../images/background.png");
     -fx-background-repeat: stretch;
     -fx-background-size: cover;
+}
+
+#side_panel {
+    -fx-background-color: #33FFFF;
+    -fx-padding: 150px 0px 0px 0px;
+}
+
+.icon_button {
+    -fx-background-color: transparent;
+    -fx-background-repeat: no-repeat;
+    -fx-background-size: contain;
+    -fx-background-position: center;
+    -fx-background-radius: 0;
+
+    -fx-alignment: baseline-left;
+    -fx-padding: 0 0 0 45px;
+}
+
+.icon_button:hover {
+    -fx-background-color: rgba(0, 0, 0, 0.1);
 }

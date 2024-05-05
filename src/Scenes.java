@@ -12,7 +12,7 @@ public class Scenes {
     private static Scene homeScene;
     private static Scene lookupScene;
     private static Scene translateScene;
-    private static Scene game1Scene;
+    private static Scene gameScene;
     private static Scene assistantScene;
     private static Scene accountScene;
 
@@ -23,7 +23,7 @@ public class Scenes {
     private static FXMLLoader homeLoader;
     private static FXMLLoader lookupLoader;
     private static FXMLLoader translateLoader;
-    private static FXMLLoader game1Loader;
+    private static FXMLLoader gameLoader;
     private static FXMLLoader assistantLoader;
     private static FXMLLoader accountLoader;
 
@@ -36,7 +36,7 @@ public class Scenes {
         signupScene = getNewSignupScene();
         lookupScene = getNewLookupScene();
         translateScene = getNewTranslateScene();
-        game1Scene = getNewGame1Scene();
+        gameScene = getNewGameScene();
         assistantScene = getNewAssistantScene();
         accountScene = getNewAccountScene();
 
@@ -69,8 +69,8 @@ public class Scenes {
         return translateLoader;
     }
 
-    public static FXMLLoader getGame1Loader() {
-        return game1Loader;
+    public static FXMLLoader getGameLoader() {
+        return gameLoader;
     }
 
     public static FXMLLoader getAssistantLoader() {
@@ -90,8 +90,8 @@ public class Scenes {
         return lookupScene;
     }
 
-    public static Scene getGame1Scene() {
-        return game1Scene;
+    public static Scene getGameScene() {
+        return gameScene;
     }
 
     public static Scene getTranslateScene() {
@@ -133,13 +133,13 @@ public class Scenes {
         return lookupScene;
     }
 
-    public static Scene getNewGame1Scene() {
-        Object[] res = getLoaderAndScene("game1.fxml", "style.css");
+    public static Scene getNewGameScene() {
+        Object[] res = getLoaderAndScene("game.fxml", "style.css");
         if (res != null) {
-            game1Loader = (FXMLLoader) res[0];
-            game1Scene = (Scene) res[1];
+            gameLoader = (FXMLLoader) res[0];
+            gameScene = (Scene) res[1];
         }
-        return game1Scene;
+        return gameScene;
     }
 
     public static Scene getNewTranslateScene() {

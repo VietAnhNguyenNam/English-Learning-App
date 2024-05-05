@@ -28,17 +28,17 @@ public class Chatbot {
             // Enable output and set request body
             connection.setDoOutput(true);
 
-            String requestBody = "{\"contents\": [" + formatConversation(userId) + "{\"role\": \"user\", \"parts\": [{\"text\": \"" + message + "\"}]}]}";
-//            JSONArray contents = formatConversation(userId);
-//            JSONObject object = new JSONObject();
-//            object.put("role", "user");
-//            JSONArray parts = new JSONArray();
-//            JSONObject partsObj = new JSONObject();
-//            partsObj.put("text", message);
-//            parts.put(partsObj);
-//            object.put("parts", parts);
-//            contents.put(object);
-//            String requestBody = "{\"contents\": " + contents.toString() + "}";
+//            String requestBody = "{\"contents\": [" + formatConversation(userId) + "{\"role\": \"user\", \"parts\": [{\"text\": \"" + message + "\"}]}]}";
+            JSONArray contents = formatConversation(userId);
+            JSONObject object = new JSONObject();
+            object.put("role", "user");
+            JSONArray parts = new JSONArray();
+            JSONObject partsObj = new JSONObject();
+            partsObj.put("text", message);
+            parts.put(partsObj);
+            object.put("parts", parts);
+            contents.put(object);
+            String requestBody = "{\"contents\": " + contents.toString() + "}";
             try (DataOutputStream wr = new DataOutputStream(connection.getOutputStream())) {
                 wr.write(requestBody.getBytes());
             }
@@ -109,10 +109,10 @@ public class Chatbot {
 
 //    {\"role\": \"user\", \"parts\": [{\"text\": \"" + message + "\"}]}
 
-    private static String formatConversation(int userId) {
+    private static JSONArray formatConversation(int userId) {
         List<String[]> list = Account.getConversation(userId);
         JSONArray resJson = new JSONArray();
-        StringBuilder res = new StringBuilder();
+//        StringBuilder res = new StringBuilder();
 
         for (final String[] strings : list) {
             JSONObject object = new JSONObject();
@@ -123,10 +123,10 @@ public class Chatbot {
             parts.put(partsObj);
             object.put("parts", parts);
             resJson.put(object);
-            res.append("{\"role\": \"").append(strings[0]).append("\", \"parts\": [{\"text\": \"").append(strings[1].replace("\n", "\\n")).append("\"}]}, ");
+//            res.append("{\"role\": \"").append(strings[0]).append("\", \"parts\": [{\"text\": \"").append(strings[1].replace("\n", "\\n")).append("\"}]}, ");
         }
 
-        return res.toString();
-//        return resJson;
+//        return res.toString();
+        return resJson;
     }
 }
